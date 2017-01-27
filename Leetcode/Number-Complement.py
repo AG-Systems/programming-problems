@@ -16,10 +16,8 @@ class Solution(object):
                 container.append(0)
             if s[x] != '0' and s[x] != '1':
                 checker = True
-        print(container)
         for z in range(0,len(container)):
             r += str(container[z])
-        print(r)
         return int(r, 2)
             
             
