@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: int
         """
         s = str(bin(num))
-        print(s)
         r = ""
         container = []
         checker = False
