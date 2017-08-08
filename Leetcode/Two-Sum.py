@@ -6,19 +6,19 @@ class Solution(object):
         :rtype: List[int]
         """
         container = {}
-        r = []
-        counter = 0
-        z = 0
+        indices = []
         for x in nums:
             if x in container:
                 container[x] = target-x
             else:
                 container[x] = target-x
         for key,val in container.items():
-            if val in container.keys():
-                counter = container[val]
-                z = val
+            if val in nums:
+                indices.append(nums.index(key))
+                if key != val:
+                    indices.append(nums.index(val))
+                else:
+                    nums[nums.index(key)] = -99
+                    indices.append(nums.index(val))
                 break
-        r = [nums.index(counter),nums.index(z)]
-        return r
-        
+        return indices
