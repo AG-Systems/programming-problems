@@ -4,49 +4,27 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        import math
-        nums.sort()
-        nums = nums[::-1]
-        neg = 0
-        output = 1
+        min1 = float("inf")
+        min2 = float("inf")
+        max1 = float("-inf")
+        max2 = float("-inf")
+        max3 = float("-inf")
+        
         for x in nums:
-            if x < 0:
-                neg += 1
-        if neg == 0:
-            nums = nums[0:3]
-            for x in nums:
-                output *= x
-            return output
-        elif neg == 1:
-            counter = 0
-            for x in nums:
-                if x > 0:
-                    output *= x
-                    counter += 1
-                if counter >= 3:
-                    return output
-        elif neg == 2:
-            if len(nums) == 3:
-                nums = nums[0:3]
-                for x in nums:
-                    output *= x
-                return output
-            else:
-                negative = abs(sum(nums[-2:]))
-                pos = abs(sum(nums[1:3]))
-                output = nums[0]
-                if pos > negative:
-                    for x in nums[1:3]:
-                        output *= x
-                    return output      
-                else:
-                    for x in nums[-2:]:
-                        output *= x
-                    return output                       
-        elif neg > 2:
-            last2 = nums[-2:]
-            output = nums[0] 
-            for x in last2:
-                output *= x
-            return output
+            if x <= min1:
+                min2 = min1
+                min1 = x
+            elif x <= min2:
+                min2 = x
+            
+            if x >= max1:
+                max3 = max2
+                max2 = max1
+                max1 = x
+            elif x >= max2:
+                max3 = max2
+                max2 = x
+            elif x >= max3:
+                max3 = x
+        return max(min1 * min2 * max1, max1 * max2 * max3)
             
