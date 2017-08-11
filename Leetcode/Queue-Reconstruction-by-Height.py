@@ -38,6 +38,33 @@ class Solution(object):
                 else:
                     return container
             
-                    
+"""
+class Solution(object):
+    def reconstructQueue(self, people):
+        if not people: return []
+
+        # obtain everyone's info
+        # key=height, value=k-value, index in original array
+        dct = {}
+        height = []
+        container = []
+        for x in xrange(len(people)):
+            p = people[x]
+            if p[0] in dct:
+                dct[p[0]] += (p[1], x),
+            else:
+                dct[p[0]] = [(p[1], x)]
+                height += p[0],
+
+        height.sort()      # here are different heights we have
+
+        # sort from the tallest group
+        for h in height[::-1]:
+            dct[h].sort()
+            for x in dct[h]:
+                container.insert(x[0], people[x[1]])
+
+        return container
+"""
                     
         
