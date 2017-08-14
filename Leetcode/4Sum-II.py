@@ -7,12 +7,29 @@ class Solution(object):
         :type D: List[int]
         :rtype: int
         """
-        import itertools
-        container = []
-        l = [A,B,C,D]
-        l = list(itertools.product(*l))
-        #print l
-        for x in l:
-            if len(x) == 4 and sum(x) == 0:
-                container.append(x)
-        return len(container)
+        container = {}
+        counter = 0
+        for x in A:
+            for z in B:
+                answer = z + x
+                if answer in container:
+                    container[answer] += 1
+                else:
+                    container[answer] = 1
+        for x in C:
+            for z in D:
+                answer = -(x + z)
+                if answer in container:
+                    counter += container[answer]
+        return counter
+                    
+                    
+        """
+        def fourSumCount(self, A, B, C, D):
+            AB = collections.Counter(a+b for a in A for b in B)
+            return sum(AB[-c-d] for c in C for d in D)
+        
+        Super clever solution
+        """
+        
+        
