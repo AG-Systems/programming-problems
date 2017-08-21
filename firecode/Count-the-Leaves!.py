@@ -14,3 +14,16 @@ class BinaryTree:
                 if root.right_child:
                     right =  self.number_of_leaves(root.right_child, leaves)
         return sum([left,right,leaves])
+
+    """
+        def number_of_leaves(self,root):
+            if not root:
+                return 0
+            if not root.left_child and not root.right_child:
+                return 1
+            l = self.number_of_leaves(root.left_child)
+            r = self.number_of_leaves(root.right_child)
+            return l+r
+            
+            Solution I should be going for 
+   """
