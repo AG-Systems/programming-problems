@@ -14,3 +14,22 @@ def helper(n, container):
 def better_fibonacci(n):
     l = [0 for _ in range(n+1)]
     return helper(n,l)
+
+"""
+def better_fibonacci(n):
+    n2 = 0
+    n1 = 1
+    if n == 0:
+        return n2
+    elif n == 1:
+        return n1
+    counter = 2
+    while counter <= n:
+        temp = n1 + n2
+        n2 = n1
+        n1 = temp
+        counter += 1
+    return n1
+    
+Better solution 
+"""
