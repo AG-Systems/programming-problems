@@ -4,3 +4,7 @@ def transpose_matrix(matrix):
     for x in xrange(len(matrix)):
         for z in xrange(len(matrix[x])):
             matrix[x][z] = copy_m[z][x]
+"""
+def transpose_matrix(m):
+    m[:] = map(list,zip(*m))
+"""
