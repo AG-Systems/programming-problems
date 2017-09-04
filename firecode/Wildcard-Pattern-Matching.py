@@ -19,3 +19,29 @@ def match(first, second):
             return False
     if "*" in first and "*" in first:
         pass
+
+    
+    """
+    
+    
+    def match(first, second):
+    l = 0; m = 0; starIdx = -1;i = -1;
+    while l < len(second):
+        if m < len(first) and (first[m] == '?' or first[m] == second[l]) :
+            m += 1
+            l += 1
+        elif m < len(first) and first[m] == '*' :  
+            i = l
+            starIdx = m 
+            m += 1 
+        elif starIdx != -1 :
+            l = i+1
+            m = starIdx + 1
+            i += 1
+        else :
+            return False
+    while m < len(first) and first[m] == '*':
+        m += 1
+    return m == len(first)
+    
+"""
