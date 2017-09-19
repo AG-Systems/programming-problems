@@ -1,24 +1,46 @@
 def match(first, second):
-    if len(first) == len(second) and "?" in first and not "*" in second:
+    if len(first) == len(second) and ("?" in first  or "*" in first):
         return True
-    if "*" in first and not "?" in first:
-        l = []
-        for x in range(len(first)):
-            if first[x] != "*":
-                l.append(first[x])
-            else:
-                if l != []:
-                    index = l.index(l[-1])
-                    temp = ["*"] * int(len(second[index:index+1]))
-                    l.extend(temp)
-                else:
-                    l.append("*")
-        if len(l) == len(second):
-            return True
-        else:
-            return False
-    if "*" in first and "*" in first:
-        pass
+    if len(first) > len(second) and "*" in first and not "?" in first:
+        return True
+    star = 0
+    ques = 0
+    first = list(first)
+    second = list(second)
+    for x in first:
+        if x == "*" and "?" not in first:
+            star = first.index(x)
+            for z in range(len(second) - len(first)+1):
+                first.insert(star, "*")
+            if len(first)-len(second) == 1:
+                first.remove("*")
+        elif x == "*" and "?" in first:
+            star = first.index(x)
+            char1 = first.index(first[star+1])
+            if first[star+1] != "*":
+                char2 = second.index(first[star+1])
+                if len(first[char1:-1]) == len(second[char2:-1]) and not "*" in first[char1:-1] and "?" in first[char1:-1]:
+                    return False
+            for z in range((len(second) - len(first) - first.count("?"))+1):
+                first.insert(star, "*")
+            if len(first)-len(second) == 1:
+                first.remove("*")
+            
+    if len(first) == len(second):
+        print(first,second)
+        return True
+    else:
+        print(first,second)
+        return False
+
+#print(match("fi*de", "firecode")) #True
+#print(match("fir?code", "firecode")) #True
+#print(match("fi*d?", "firecode")) #true
+print(match("fi*d?", "firecodee")) #False
+#print(match("fi?de", "firecode")) #False
+#print(match("*i*d?", "fabfirecode")) #True
+#print(match("?i?e*d?", "fairecode")) #False
+print(match("*i?e*d?", "firecode")) #True
 
     
     """
