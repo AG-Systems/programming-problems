@@ -17,6 +17,8 @@ def fib_to(n, total_lambs):
 def answer(total_lambs):
     total = 0
     counter = 0
+    import math
+    """
     if total_lambs > 10**9 or total_lambs < 10:
         gen = [1]
     else:
@@ -29,6 +31,24 @@ def answer(total_lambs):
         gen.append(current_value)
         counter += 1
     print(gen)
-    return fib_to(len(gen)* 3, total_lambs) - len(gen)
+    """
+    x = math.log(total_lambs, 2)
+    if int(x) != x:
+        x = int(x)
+    z = total_lambs - ((1-2 ** x)/-1)
+    if z >= 2 ** (x-1) + 2 ** (x - 2):
+        x += 1
+    if total_lambs == 1:
+        x = 1
+    elif total_lambs == 0:
+        x = 0
+    elif total_lambs == 2:
+        x = 1
+    print(x)
+    if total_lambs > 10**9 or total_lambs < 10:
+        x += 1
+    else:
+        x = x
+    return fib_to(x* 10, total_lambs) - x
 
-print(answer(10))
+print(answer(13))
