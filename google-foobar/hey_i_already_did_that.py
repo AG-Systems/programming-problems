@@ -27,6 +27,8 @@ def to_decimal(number, base):
     return sum([int(character) * base ** index for index,character in enumerate(str(number)[::-1])])
 """
 def answer(n,b):
+    if n == 0 or n == 1:
+        return 1
     if int(max(n)) > (b-1):
         return 0
     k = len(n)
@@ -36,7 +38,7 @@ def answer(n,b):
     counter = 0
     container = []
     print("Started compution")
-    while counter < 15:
+    while counter < 50:
         new_n = [int(i) for i in n]
         x = list(new_n)
         y = list(new_n)
@@ -65,9 +67,7 @@ def answer(n,b):
         print(n)
         counter += 1
         if n not in container:
-            container.append(n)
-            if len(container) > 11:
-                container.pop(0)
+            container.append(str(n))
         else:
             last_num = container.index(str(n))
             return len(container) - last_num
