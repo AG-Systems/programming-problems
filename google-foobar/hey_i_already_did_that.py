@@ -1,5 +1,5 @@
-def based(n, b):
-    a = [0] * n
+def based(n, b, k):
+    a = [0] * k
     if n < 0:
         return 0
     if b <= 1:
@@ -28,7 +28,7 @@ def to_decimal(number, base):
 """
 def answer(n,b):
     if int(max(n)) > (b-1):
-        return 1
+        return 0
     k = len(n)
     print("N is: " + n)
     print("B is: " + str(b))
@@ -52,7 +52,7 @@ def answer(n,b):
         z = x - y
         z = int(str(z), 10)
         print("Z: " + str(z))
-        z = based(z,b)
+        z = based(z,b, k)
         if len(str(z)) == k:
             n = str(z)
         else:
