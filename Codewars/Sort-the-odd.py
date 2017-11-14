@@ -11,6 +11,6 @@ def sort_array(source_array):
     for x in range(len(source_array)):
         val = source_array[x]
         if not val % 2 == 0:
-            source[x] = odd_list[counter]
+            source_array[x] = odd_list[counter]
             counter += 1
     return source_array
