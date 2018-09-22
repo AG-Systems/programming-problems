@@ -25,3 +25,21 @@ class Solution(object):
                 container.append(node.right)
         return root
                 
+'''
+class Solution(object):
+    def invertTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: TreeNode
+        """
+        if root:
+            if root.left or root.right:
+                temp = root.left
+                root.left = root.right
+                root.right = temp
+                self.invertTree(root.left)
+                self.invertTree(root.right)
+                return root
+            else:
+                return root
+'''
