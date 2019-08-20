@@ -1,21 +1,23 @@
 def merge(left_array, right_array):
   sorted_list = []
 
-  while len(left_array) > 0 and len(right_array) > 0:
-    if left_array[0] > right_array[0]:
-      sorted_list.append(right_array[0])
-      right_array.pop(0)
-    else:
-      sorted_list.append(left_array[0])
-      left_array.pop(0)
-  
+  left_index = 0
+  right_index = 0
 
-  while len(left_array) > 0:
-    sorted_list.append(left_array[0])
-    left_array.pop(0)
-  while len(right_array) > 0:
-    sorted_list.append(right_array[0])
-    right_array.pop(0)
+  while  left_index < len(left_array) and right_index < len(right_array):
+    if left_array[left_index] > right_array[right_index]:
+      sorted_list.append(right_array[right_index])
+      right_index += 1
+    else:
+      sorted_list.append(left_array[left_index])
+      left_index += 1
+  
+  while left_index < len(left_array):
+    sorted_list.append(left_array[left_index])
+    left_index += 1
+  while right_index < len(right_array):
+    sorted_list.append(right_array[right_index])
+    right_index += 1
   
   return sorted_list
 
