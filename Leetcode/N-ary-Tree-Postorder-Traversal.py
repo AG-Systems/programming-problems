@@ -21,3 +21,17 @@ class Solution(object):
         dfs(root)
         return container
         
+"""
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        self.postorder_list = []
+        
+        def order(root):
+            if root:
+                for index in range(0,len(root.children)):
+                    order(root.children[index])
+                self.postorder_list.append(root.val)
+        
+        order(root)
+        return self.postorder_list
+"""
