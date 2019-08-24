@@ -1,19 +1,23 @@
-class Solution(object):
-    def threeSum(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-        from random import shuffle
-        container = list(itertools.combinations(nums,3))
-        sum_container = []
-        #print list(itertools.combinations(nums,3))
-        for x in container:
-            str(x).strip('()')
-            if sum(x) == 0:
-                temp = list(x)
-                temp.sort()
-                if temp not in sum_container:
-                    sum_container.append(list(temp))
-        #sum_container = [list(x) for x in {(tuple(e)) for e in sum_container}]
-        return sum_container
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        results = []
+        for x in range(0, len(nums) - 2):
+            if x == 0 or nums[x] > nums[x - 1]:
+                start = x + 1
+                end = len(nums) - 1
+                
+                while start < end:
+                    if nums[x] + nums[start] + nums[end] == 0:
+                        results.append([nums[x], nums[start], nums[end]])
+                    
+                    if nums[x] + nums[start] + nums[end] < 0:
+                        current_start = nums[start]
+                        while current_start == nums[start] and start < end:
+                            start += 1
+                    else:
+                        current_end = nums[end]
+                        while current_end == nums[end] and start < end:
+                            end -= 1
+        return results
+        
