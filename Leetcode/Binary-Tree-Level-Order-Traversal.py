@@ -33,3 +33,27 @@ class Solution(object):
                 r[counter].append(node.right.val)
         return r
         
+"""
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        level_order_list = []
+        
+        def dfs(root,lvl):
+            if root:
+                if len(level_order_list) <= lvl:
+                    level_order_list.append([])
+                level_order_list[lvl].append(root.val)
+                lvl += 1
+                dfs(root.left, lvl)
+                dfs(root.right, lvl)
+        
+        dfs(root, 0)
+        return level_order_list
+"""
