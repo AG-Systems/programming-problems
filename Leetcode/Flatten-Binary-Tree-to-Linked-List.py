@@ -29,3 +29,22 @@ class Solution:
             root.left = None
             root = root.right
         return root
+
+    """
+    SOLUTION THAT I SHOULD AIM FOR!!!!
+    
+    def flatten(self, root: TreeNode) -> None:
+        # put right subtree to the left subtree's right-most
+        # put left subtrees to the right
+        # go to right subtrees and repeat
+        if not root:
+            return
+        node = root.left
+        if node:
+            while node.right:
+                node = node.right
+            node.right = root.right
+            root.right = root.left
+            root.left = None
+        self.flatten(root.right)
+"""
