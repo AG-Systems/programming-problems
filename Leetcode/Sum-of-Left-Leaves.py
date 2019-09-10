@@ -28,3 +28,29 @@ class Solution(object):
                     container.append(node.right)
         return sum
             
+"""
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def sumOfLeftLeaves(self, root: TreeNode) -> int:
+        if root == None:
+            return 0
+        self.answer = 0
+        def leaf_sigma(root):
+            if root == None:
+                return 0
+            
+            left = root.left
+            if left and not left.left and not left.right:
+                self.answer += left.val
+            leaf_sigma(root.left)
+            leaf_sigma(root.right)
+            
+        leaf_sigma(root)
+        return self.answer
+"""
