@@ -54,3 +54,17 @@ class Solution:
         leaf_sigma(root)
         return self.answer
 """
+
+
+
+
+"""
+class Solution:
+    def sumOfLeftLeaves(self, root: TreeNode) -> int:
+        if root == None:
+            return 0
+        if root.left and root.left.left == None and root.left.right == None:
+            return root.left.val + self.sumOfLeftLeaves(root.right)
+        
+        return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
+"""
