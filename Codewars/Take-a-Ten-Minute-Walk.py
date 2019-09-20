@@ -1,7 +1,7 @@
 def isValidWalk(walk):
     if len(walk) == []:
         return True
-    if len(walk) > 10:
+    if len(walk) > 10 or len(walk) < 10:
         return False
     pos_table = {
         "n": 0,
@@ -13,10 +13,7 @@ def isValidWalk(walk):
     for pos in walk:
         pos_table[pos] += 1
     
-    if pos_table["n"] == pos_table["s"]:
-        if pos_table["e"] == pos_table["w"]:
-            return True
-        else:
-            return False
+    if pos_table["n"] == pos_table["s"] and pos_table["e"] == pos_table["w"]:
+        return True
     else:
         return False
