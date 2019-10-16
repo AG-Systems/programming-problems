@@ -18,6 +18,7 @@ import sys
 #
 
 def findTerrainTypes(elevations, features):
+    import math
     # Write your code here
     if elevations == [] or features == []:
         return []
@@ -30,13 +31,49 @@ def findTerrainTypes(elevations, features):
         pass
     def detect_highland(elevations, features):
         # highlands have a very high elevation without any "drops"
-        pass
+        row = 0
+        col = 0
+        intial_height = elevations[row][col]
+        while row < len(elevations) - 1:
+            while col < len(elevations[row]) - 1:
+                if features[row][col] != "W" and features[row][col] != "T":
+                    if abs(intial_height - elevations[row][col + 1]) <= 3:
+                        if features[row][col + 1] != "W" and features[row][col + 1] != "T":
+                            return True
+                    if abs(intial_height - elevations[row + 1][col + 1]) <= 3:
+                        if features[row + 1][col + 1] != "W" and features[row + 1][col + 1] != "T":
+                            return True
+                    if abs(intial_height - elevations[row + 1][col]) <= 3:
+                        if features[row + 1][col] != "W" and features[row + 1][col] != "T":
+                            return True                
+                    col += 1
+            row += 1
+        return False
     def detect_waterfall(elevations, features):
         # waterfalls are just like rivers, they have a sudden steep drop
         pass
     def detect_cliff(elevations, features):
         # cliffs are just like highlands however they have a sudden steep drop
-        pass
+        # highlands have a very high elevation without any "drops"
+        row = 0
+        col = 0
+        intial_height = elevations[row][col]
+        while row < len(elevations) - 1:
+            while col < len(elevations[row]) - 1:
+                if features[row][col] != "W" and features[row][col] != "T":
+                    if abs(intial_height - elevations[row][col + 1]) <= 10:
+                        if features[row][col + 1] != "W" and features[row][col + 1] != "T":
+                            return True
+                    if abs(intial_height - elevations[row + 1][col + 1]) <= 10:
+                        if features[row + 1][col + 1] != "W" and features[row + 1][col + 1] != "T":
+                            return True
+                    if abs(intial_height - elevations[row + 1][col]) <= 10:
+                        if features[row + 1][col] != "W" and features[row + 1][col] != "T":
+                            return True                
+                col += 1
+            row += 1
+        return False
+
     def detect_lake(elevations, features):
         # lake has a very similar elevation throughout 
         pass
@@ -61,5 +98,5 @@ def findTerrainTypes(elevations, features):
     if detect_forest(elevations, features):
         terrain_types.append("forest")
     return terrain_types
-    
+
 if __name__ == '__main__':
