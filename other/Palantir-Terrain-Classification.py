@@ -62,14 +62,14 @@ def findTerrainTypes(elevations, features):
             while col < len(elevations[row]) - 1:
                 if features[row][col] != "W" and features[row][col] != "T":
                     if abs(intial_height - elevations[row][col + 1]) <= 10:
-                        if features[row][col + 1] != "W" and features[row][col + 1] != "T":
-                            return True
+                        #if features[row][col + 1] != "W" and features[row][col + 1] != "T":
+                        return True
                     if abs(intial_height - elevations[row + 1][col + 1]) <= 10:
-                        if features[row + 1][col + 1] != "W" and features[row + 1][col + 1] != "T":
-                            return True
+                        #if features[row + 1][col + 1] != "W" and features[row + 1][col + 1] != "T":
+                        return True
                     if abs(intial_height - elevations[row + 1][col]) <= 10:
-                        if features[row + 1][col] != "W" and features[row + 1][col] != "T":
-                            return True                
+                        #if features[row + 1][col] != "W" and features[row + 1][col + 1] != "T":
+                        return True                
                 col += 1
             row += 1
         return False
