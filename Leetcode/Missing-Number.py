@@ -31,7 +31,20 @@ class Solution:
         
         return total_seq_xor ^ current_num_xor
 """
-            
+
+
+"""
+        current_sum = 0
+        max_sum = 0
+
+        for i in range(0, len(nums) + 1):
+            max_sum += i
+        
+        for i in nums:
+            current_sum += i
+        
+        return max_sum - current_sum
+"""
         
             
         
